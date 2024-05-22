@@ -2,21 +2,21 @@ const express = require("express");
 
 const router = express.Router();
 
-const { sayWelcome } = require("../../controllers/sayActions");
-
-const {browse} = require("../../controllers/programActions");
-
-router.get("/programs", browse);
-
-router.get("/", sayWelcome);
-
 /* ************************************************************************* */
-// Import And Use Routers Here
+// Define Your API Routes Here
 /* ************************************************************************* */
-const itemsRouter = require("./items/router");
 
-router.use("/items", itemsRouter);
+// Import item-related actions
+const { browse, read } = require("../../../controllers/programActions");
 
+// Route to get a list of items
+router.get("/", browse);
+
+// Route to get a specific item by ID
+router.get("/:id", read);
+
+// Route to add a new item
+/* router.post("/", add); */
 
 /* ************************************************************************* */
 
